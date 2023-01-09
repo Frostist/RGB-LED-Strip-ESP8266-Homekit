@@ -60,7 +60,7 @@ That should be it. You should just be able to run the code now, the accessory ve
 
 
 
-Resources used to get this working!
-https://www.programmingalgorithms.com/algorithm/hsv-to-rgb/c/
-https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB
-https://github.com/alejandro-n-rivera/arduino_led_rgb_hsv
+## Resources used to get this working!
+- https://www.programmingalgorithms.com/algorithm/hsv-to-rgb/c/
+- https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB
+- https://github.com/alejandro-n-rivera/arduino_led_rgb_hsv
