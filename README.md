@@ -1,4 +1,4 @@
-# Ledstrip_ESP8266
+# Homekit ESP8266 - RGB Ledstrip 
 A simple project that allows for the control of a RGB (4-pin) LED Strip to be controlled natively by Apples Homekit
 
 # Notes:
