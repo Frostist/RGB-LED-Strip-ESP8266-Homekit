@@ -26,10 +26,18 @@ This code is still a work in progress, as many other lighting solutions exsit fo
 I used pins D1, D2 and D3.
 These equate to PIN 5, 4 and 0.
 
+
+
+
 ## 2. The next step is to enter Wifi and Password. 
 > Note: the network can be a hidden SSID but it has to be a 2.4Ghz wifi network.
+
 You can find this in the wifi_info.h file. 
 This can be easily edited in the ardunio IDE.
+
+
+
+
 
 ## 3. Wire in your LED to the board.
 
@@ -39,6 +47,9 @@ You'll need to either create a bread board or do what i did, and "hack" one, thu
 I bought this LED light strip [here](https://www.takealot.com/multipurpose-5m-smd-5050-60led-rgb-strip-light/PLID70902466/), you can find them anywhere on the internet, they are very cheap and work well for fun hacking with Homekit.
 
 However be aware the one i bought came with a very werid power supply, so maybe buy another one...
+
+
+
 
 
 ## 4. Run the code!
