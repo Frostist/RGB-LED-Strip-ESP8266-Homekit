@@ -38,6 +38,8 @@ You'll need to either create a bread board or do what i did, and "hack" one, thu
 
 I bought this LED light strip [here](https://www.takealot.com/multipurpose-5m-smd-5050-60led-rgb-strip-light/PLID70902466/), you can find them anywhere on the internet, they are very cheap and work well for fun hacking with Homekit.
 
+However be aware the one i bought came with a very werid power supply, so maybe buy another one...
+
 
 ## 4. Run the code!
 That should be it. You should just be able to run the code now, the accessory version is 3.0, so if you see any updates here, then you'll know to update your own software.
