@@ -157,16 +157,35 @@ void set_hue(const homekit_value_t v)
 
 
 
-// turn on
+//MY CODE STARTS HERE//
+
+//Turn on
 void TurnOn()
 {
 setLEDHSV(current_hue, current_sat, current_brightness);   
 }
 
-// turn off
+//Turn off
 void TurnOff()
 {
 setLEDHSV(0,0,0);
+}
+
+
+//updates homekit and lights etc
+void updateColor() {
+  if (is_on) {
+    if (received_hue && received_sat) {
+      Serial.println("Updating Colour");
+      TurnOn();
+      received_hue = false;
+      received_sat = false;
+    }
+  } else if (!is_on)  //lamp - switch to off
+  {
+    Serial.println("is_on == false");
+    TurnOff();
+  }
 }
 
 
@@ -192,10 +211,7 @@ void setLEDHSV(float h, float s, float v) {
     return;
 
   } else {
-
-    if (h == 360)
-      h = 0;
-    else
+    
     h = h / 60;  // sector 0 to 5
     i = (int)trunc(h);
     f = h - i;  // factorial part of h
@@ -237,25 +253,5 @@ void setLEDHSV(float h, float s, float v) {
     }
     setLEDRGB(r * 255, g * 255, b * 255);
     return;
-  }
-}
-
-
-
-
-
-//updates homekit and lights etc
-void updateColor() {
-  if (is_on) {
-    if (received_hue && received_sat) {
-      Serial.println("Updating Colour");
-      TurnOn();
-      received_hue = false;
-      received_sat = false;
-    }
-  } else if (!is_on)  //lamp - switch to off
-  {
-    Serial.println("is_on == false");
-    TurnOff();
   }
 }
