@@ -76,8 +76,9 @@ However be aware the one i bought came with a very werid power supply, so maybe 
 
 >Make sure your pin outputs match the mosfets that will power that stream of LED's otherwise your colours will come out very werid.
 
+![This is an image](https://github.com/Frostist/RGB-LED-Strip-ESP8266-Homekit/blob/main/images/led_strips_ledstripfet.gif)
 
-
+The following image isn't correct because it shows an ardunio, but the wiring remains the same for an esp board. Just make sure ground is GND on the board.
 
 
 ## 4. Run the code!
