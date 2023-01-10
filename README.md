@@ -37,7 +37,8 @@ void setup() {
 
 
 # Read through the steps below and watch the video as well to help!
-## 1. The first step is to set your pins. Look at the following image of a ESP-12E board.
+## 1. The first step is to set your pins. 
+Look at the following image of a ESP-12E board.
 
 ![This is an image](https://github.com/Frostist/RGB-LED-Strip-ESP8266-Homekit/blob/main/images/esp-12e.jpg)
 
