@@ -33,8 +33,20 @@ void setup() {
   my_homekit_setup();
 }
 ```
+Some more thoughts... My newest update to 3.0.0 includes this code here. To get the unit to reconnect to the wifi based off whether it has a homekit connection and if 10 units of time have passed. This was a serious pain for me, because with some garbage wifi routers they need to be rebooted every now and again, and when this happens the esp8266 unit disconnects and then poof! Never reconnects again. Thus tis update fixes that. 
 
+```
+  //calling the counter and hosts logic 
+  if (arduino_homekit_connected_clients_count() == 0 && timepassed > 10) {
+    delay(10000);
+    LOG_D("Wifi or Homekit not connected.");
+    LOG_D("Trying to reconnect to wifi.");
+    wifi_connect();
 
+    //Resetting the counter to give it some time for the wifi to start up
+    timepassed = 0;
+  }
+```
 
 # Read through the steps below and watch the video as well to help!
 ## 1. The first step is to set your pins. 
