@@ -1,6 +1,8 @@
 # Homekit ESP8266 - RGB Ledstrip 
 A simple project that allows for the control of a RGB (4-pin) LED Strip to be controlled natively by Apples Homekit
 
+Go [here](https://github.com/Frostist/Wills-Homekit-Stuff) to see all the rest of my Homekit projects!
+
 # Notes:
 - You'll need to download/have the [ardunio IDE](https://www.arduino.cc/en/software) 
 - You'll need some sort of [esp8266](https://botshop.co.za/products/nodemcu-esp8266-development-board) or [esp32](https://botshop.co.za/products/nodemcu-esp32-development-board) board (with at least 3 outputs)
