@@ -48,6 +48,8 @@ Some more thoughts... My newest update to 3.0.0 includes this code here. To get 
   }
 ```
 
+I have also cracked a way to store varibles in the esp8266 memory!! Which is great for storing a state, for when the power goes off and on again... I might emplement this in the future...
+
 # Read through the steps below and watch the video as well to help!
 ## 1. The first step is to set your pins. 
 Look at the following image of a ESP-12E board.
