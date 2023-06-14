@@ -11,7 +11,7 @@ bool received_sat = false;
 bool received_hue = false;
 bool is_on = false;
 
-float current_brightness = 50;
+float current_brightness = 100;
 float current_sat = 0.0;
 float current_hue = 0.0;
 
@@ -19,6 +19,8 @@ float h;
 float s;
 float v;
 
+//defining the counter for wifi
+int timepassed = 0;
 
 #define RED_PIN 5
 #define BLUE_PIN 4
@@ -74,34 +76,43 @@ void my_homekit_setup() {
 void my_homekit_loop() {
   arduino_homekit_loop();
   const uint32_t t = millis();
+
   if (t > next_heap_millis) {
+    timepassed++;
     // show heap info every 5 seconds
     next_heap_millis = t + 5 * 1000;
     LOG_D("Free heap: %d, HomeKit clients: %d",
           ESP.getFreeHeap(), arduino_homekit_connected_clients_count());
+  }
+
+  //calling the counter and hosts logic 
+  if (arduino_homekit_connected_clients_count() == 0 && timepassed > 10) {
+    delay(10000);
+    LOG_D("Wifi or Homekit not connected.");
+    LOG_D("Trying to reconnect to wifi.");
+    wifi_connect();
+
+    //Resetting the counter to give it some time for the wifi to start up
+    timepassed = 0;
   }
 }
 
 
 //THIS IS HOMEKIT SOFTWARE (DO NOT CHANGE)
 //Sets the lights to be on or off
-void set_on(const homekit_value_t v)
-{
-    bool on = v.bool_value;
-    cha_on.value.bool_value = on; // sync the value
+void set_on(const homekit_value_t v) {
+  bool on = v.bool_value;
+  cha_on.value.bool_value = on;  // sync the value
 
-    if (on)
-    {
-        is_on = true;
-        Serial.println("Light On");
-        TurnOn();
-    }
-    else
-    {
-        is_on = false;
-        Serial.println("Light Off");
-        TurnOff();
-    }
+  if (on) {
+    is_on = true;
+    Serial.println("Light On");
+    TurnOn();
+  } else {
+    is_on = false;
+    Serial.println("Light Off");
+    TurnOff();
+  }
 }
 
 
@@ -109,50 +120,47 @@ void set_on(const homekit_value_t v)
 
 //THIS IS HOMEKIT SOFTWARE (DO NOT CHANGE)
 //sets and receives LED Brightness
-void set_bright(const homekit_value_t v)
-{
-    Serial.println("set_bright:");
-    float bright = v.int_value;
-    Serial.println(bright);
-    cha_bright.value.int_value = bright; // sync the value
+void set_bright(const homekit_value_t v) {
+  Serial.println("set_bright:");
+  float bright = v.int_value;
+  Serial.println(bright);
+  cha_bright.value.int_value = bright;  // sync the value
 
-    current_brightness = bright/100;
-    
-    updateColor();
+  current_brightness = bright / 100;
+
+  updateColor();
 }
 
 
 
 //THIS IS HOMEKIT SOFTWARE (DO NOT CHANGE)
 //sets and receives LED Sat
-void set_sat(const homekit_value_t v)
-{
-    Serial.println("set_sat:");
-    float sat = v.float_value;
-    Serial.println(sat);
-    cha_sat.value.float_value = sat; // sync the value
+void set_sat(const homekit_value_t v) {
+  Serial.println("set_sat:");
+  float sat = v.float_value;
+  Serial.println(sat);
+  cha_sat.value.float_value = sat;  // sync the value
 
-    current_sat = sat/100;
-    received_sat = true;
-    
-    updateColor();
+  current_sat = sat / 100;
+  received_sat = true;
+
+  updateColor();
 }
 
 
 
 //THIS IS HOMEKIT SOFTWARE (DO NOT CHANGE)
 //sets and receives LED Hue
-void set_hue(const homekit_value_t v)
-{
-    Serial.println("set_hue:");
-    float hue = v.float_value;
-    Serial.println(hue);
-    cha_hue.value.float_value = hue; // sync the value
+void set_hue(const homekit_value_t v) {
+  Serial.println("set_hue:");
+  float hue = v.float_value;
+  Serial.println(hue);
+  cha_hue.value.float_value = hue;  // sync the value
 
-    current_hue = hue;
-    received_hue = true;
-    
-    updateColor();
+  current_hue = hue;
+  received_hue = true;
+
+  updateColor();
 }
 
 
@@ -160,15 +168,13 @@ void set_hue(const homekit_value_t v)
 //MY CODE STARTS HERE//
 
 //Turn on
-void TurnOn()
-{
-setLEDHSV(current_hue, current_sat, current_brightness);   
+void TurnOn() {
+  setLEDHSV(current_hue, current_sat, current_brightness);
 }
 
 //Turn off
-void TurnOff()
-{
-setLEDHSV(0,0,0);
+void TurnOff() {
+  setLEDHSV(0, 0, 0);
 }
 
 
@@ -211,7 +217,7 @@ void setLEDHSV(float h, float s, float v) {
     return;
 
   } else {
-    
+
     h = h / 60;  // sector 0 to 5
     i = (int)trunc(h);
     f = h - i;  // factorial part of h

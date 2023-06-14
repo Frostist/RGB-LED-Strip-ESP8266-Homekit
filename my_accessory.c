@@ -7,7 +7,7 @@ void my_accessory_identify(homekit_value_t _value) {
 
 homekit_characteristic_t cha_on = HOMEKIT_CHARACTERISTIC_(ON, false);
 homekit_characteristic_t cha_name = HOMEKIT_CHARACTERISTIC_(NAME, "RGB Strip");
-homekit_characteristic_t cha_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 50);
+homekit_characteristic_t cha_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
 homekit_characteristic_t cha_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
 homekit_characteristic_t cha_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
 
@@ -18,7 +18,7 @@ homekit_accessory_t *accessories[] = {
             HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Will Homekit"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "130299"),
             HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266-12E"),
-            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "3.0"),
+            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "3.8"),
             HOMEKIT_CHARACTERISTIC(IDENTIFY, my_accessory_identify),
             NULL
         }),
