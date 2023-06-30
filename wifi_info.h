@@ -11,9 +11,9 @@ const char *ssid = "Your SSID";
 const char *password = "Your Password";
 
 void wifi_connect() {
+	WiFi.persistent(true);
 	WiFi.mode(WIFI_STA);
 	WiFi.setAutoReconnect(true);
-  WiFi.persistent(true);
 	WiFi.begin(ssid, password);
 	Serial.println("WiFi connecting...");
 	while (!WiFi.isConnected()) {
