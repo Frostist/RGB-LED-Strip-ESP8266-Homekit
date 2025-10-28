@@ -15,7 +15,7 @@ This code is still a work in progress, as many other lighting solutions exsit fo
 - You'll need the ardunio homekit library [here](https://github.com/Mixiaoxiao/Arduino-HomeKit-ESP8266/)
 - You'll need esp serial library [here](https://github.com/plerup/espsoftwareserial/)
 - You'll need esp homekit library [here](https://github.com/maximkulkin/esp-homekit)
-- You'll need the esp8266 board manager [here](https://arduino-esp8266.readthedocs.io/en/latest/installing.html/)
+- You'll need the esp8266 board manager [here](https://arduino-esp8266.readthedocs.io/en/3.1.2/installing.html)
 > or
 - You'll need the esp32 board manager [here](https://espressif-docs.readthedocs-hosted.com/projects/arduino-esp32/en/latest/installing.html)
 > For this one just follow the instructions on the website, if you get lost just watch my video.
